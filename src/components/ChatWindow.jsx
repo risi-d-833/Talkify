@@ -1,21 +1,29 @@
-import ChatHeader from "./ChatHeader";
-import Message from "./Message";
-import ChatInput from "./ChatInput";
+import { useState } from "react";
 
 export default function ChatWindow() {
+  const [msg, setMsg] = useState("");
+
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex flex-col flex-1">
 
-      <ChatHeader />
-
-      {/* Messages */}
-      <div className="flex-1 p-6 space-y-4 overflow-y-auto bg-[#e5edf5]">
-        <Message text="Hey Sherry, what are you up to tonight?" />
-        <Message text="Hey Zoe, nothing. You?" isOwn />
-        <Message text="I found this cool cafe nearby!" />
+      <div className="p-4 border-b border-gray-800">
+        Chat
       </div>
 
-      <ChatInput />
+      <div className="flex-1 p-4 space-y-2 overflow-y-auto">
+        <div className="bg-indigo-600 p-2 rounded w-fit">Hello</div>
+        <div className="bg-gray-700 p-2 rounded w-fit ml-auto">Hi</div>
+      </div>
+
+      <div className="p-4 flex gap-2">
+        <input
+          value={msg}
+          onChange={(e) => setMsg(e.target.value)}
+          className="flex-1 p-2 bg-black rounded"
+        />
+        <button className="bg-indigo-600 px-4 rounded">Send</button>
+      </div>
+
     </div>
   );
 }
